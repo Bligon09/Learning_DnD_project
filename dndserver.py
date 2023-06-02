@@ -1,8 +1,8 @@
 
 from flask import (Flask, render_template, request, flash, session,
                    redirect)
-# from model import connect_to_db, db
-# import crud
+from dndmodel import connect_to_db, db
+import dndcrud
 
 from jinja2 import StrictUndefined
 
@@ -34,8 +34,32 @@ def history():
 
     return render_template('history.html')
 
+@app.route('/user', methods =['POST'] )
+def register_user():
+    user_name = request.form.get('user_name')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    new_user = dndcrud.create_user(user_name, email, password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    # check_email = dndcrud.get_user_by_email(email)
+
+    # print(check_email)
+    # if check_email is not None:
+    #     flash("You can't use that email")
+
+    # else:
+    #     new_user = dndcrud.create_user(email, user_name, password)
+    #     flash("Your account has been created")
+        # db.session.add(new_user)
+        # db.session.commit()
+
+
+    return redirect('/')
+
 
 
 if __name__ == "__main__":
-    # connect_to_db(app)
+    connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
