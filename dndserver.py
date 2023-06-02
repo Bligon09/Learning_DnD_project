@@ -34,6 +34,12 @@ def history():
 
     return render_template('history.html')
 
+@app.route('/csheet')
+def show_sheet():
+
+
+    return render_template('csheet.html')
+
 @app.route('/user', methods =['POST'] )
 def register_user():
     user_name = request.form.get('user_name')
@@ -42,6 +48,8 @@ def register_user():
     new_user = dndcrud.create_user(user_name, email, password)
     db.session.add(new_user)
     db.session.commit()
+
+    print(new_user)
 
     # check_email = dndcrud.get_user_by_email(email)
 
@@ -56,7 +64,7 @@ def register_user():
         # db.session.commit()
 
 
-    return redirect('/')
+    return redirect('/menu')
 
 
 
