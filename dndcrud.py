@@ -24,10 +24,38 @@ def get_cnamefield_info(user_id):
     return namefield
 
 
-# def get_attributes_info(user_id):
-#     """the function to show the character sheet"""
+def get_attributes_info(user_id):
+    """the function to show the character sheet"""
 
-#     attributes=Attributes.query.filter(Attributes.user_id==user_id).one() 
+    attributes=Attributes.query.filter(Attributes.user_id==user_id).one() 
+    print(attributes)
     
-#     return attributes
+    return attributes
 
+def get_skills_info(user_id):
+    """the function to show the character sheet"""
+
+    skills=Skills.query.filter(Skills.user_id==user_id).one() 
+    
+    return skills
+
+def get_otherstats_info(user_id):
+    """the function to show the character sheet"""
+
+    otherstats=Otherstats.query.filter(Otherstats.user_id==user_id).one() 
+    
+    return otherstats
+
+def get_equipment_info(user_id):
+    """the function to show the character sheet"""
+
+    equipment=Equipment.query.filter(Equipment.user_id==user_id).one() 
+    
+    return equipment
+
+def get_feats_info(user_id):
+    """the function to show the character sheet"""
+
+    feat=Feats.query.filter(Feats.user_id==user_id).one() 
+    
+    return feat

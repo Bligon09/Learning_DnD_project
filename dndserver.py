@@ -38,10 +38,22 @@ def history():
 def show_sheet():
     #TODO: get user_id from a get or post request
     user=dndcrud.get_user_info(1)
-    namefield=dndcrud.get_Cnamefield_info(1)
+    namefield=dndcrud.get_cnamefield_info(1)
+    attributes=dndcrud.get_attributes_info(1)
+    skills=dndcrud.get_skills_info(1)
+    otherstats=dndcrud.get_otherstats_info(1)
+    equipment=dndcrud.get_equipment_info(1)
+    feats=dndcrud.get_feats_info(1)
     #TODO: get user_id from a get or post request
 
-    return render_template('csheet.html', user=user, namefield=namefield )
+    return render_template('csheet.html', 
+                           user=user, 
+                           namefield=namefield, 
+                           attributes=attributes, 
+                           skills=skills,
+                           otherstats=otherstats,
+                           equipment=equipment,
+                           feats=feats)
 
 @app.route('/user', methods =['POST'] )
 def register_user():
