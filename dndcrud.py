@@ -1,6 +1,7 @@
 
 from dndmodel import db, User, Cnamefield, Attributes, Skills, Equipment, Otherstats, Feats
 
+
 def create_user(email, user_name, password):
     """Create and return a new user."""
 

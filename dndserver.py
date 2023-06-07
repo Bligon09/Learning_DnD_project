@@ -10,6 +10,8 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
+ability_scores=["str", "dex", "con", "int", "wis", "cha"]
+
 @app.route('/')
 def homepage():
    
@@ -34,24 +36,24 @@ def history():
 
     return render_template('history.html')
 
-@app.route('/skills')
-def skills():
+@app.route('/asnskills')
+def asnskills():
 
 
-    return render_template('skills.html')
+    return render_template('asnskills.html')
 
-@app.route('/Namefield')
-def namefield():
+@app.route('/cnamefield')
+def cnamefield():
 
 
-    return render_template('Namefield.html')
+    return render_template('cnamefield.html')
 
 @app.route('/csheet')
 def show_sheet():
     #TODO: get user_id from a get or post request
     user=dndcrud.get_user_info(1)
     namefield=dndcrud.get_cnamefield_info(1)
-    attributes=dndcrud.get_attributes_info(1)
+    abilities=dndcrud.get_abilities_info(1)
     skills=dndcrud.get_skills_info(1)
     otherstats=dndcrud.get_otherstats_info(1)
     equipment=dndcrud.get_equipment_info(1)
@@ -61,7 +63,7 @@ def show_sheet():
     return render_template('csheet.html', 
                            user=user, 
                            namefield=namefield, 
-                           attributes=attributes, 
+                           abilities=abilities, 
                            skills=skills,
                            otherstats=otherstats,
                            equipment=equipment,
