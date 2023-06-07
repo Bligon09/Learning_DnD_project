@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
-ability_scores=["str", "dex", "con", "int", "wis", "cha"]
+
 
 @app.route('/')
 def homepage():
@@ -39,14 +39,21 @@ def history():
 @app.route('/asnskills')
 def asnskills():
 
+    ability_scores=["str", "dex", "con", "int", "wis", "cha"]
 
-    return render_template('asnskills.html')
+    return render_template('asnskills.html', ability_scores=ability_scores)
 
 @app.route('/cnamefield')
 def cnamefield():
 
 
     return render_template('cnamefield.html')
+
+@app.route('/otherstats')
+def otherstats():
+
+
+    return render_template('otherstats.html')
 
 @app.route('/csheet')
 def show_sheet():

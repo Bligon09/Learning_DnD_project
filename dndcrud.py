@@ -1,5 +1,5 @@
 
-from dndmodel import db, User, Cnamefield, Attributes, Skills, Equipment, Otherstats, Feats
+from dndmodel import db, User, Cnamefield, Abilities, Skills, Equipment, Otherstats, Feats
 
 
 def create_user(email, user_name, password):
@@ -25,13 +25,12 @@ def get_cnamefield_info(user_id):
     return namefield
 
 
-def get_attributes_info(user_id):
+def get_abilities_info(user_id):
     """the function to show the character sheet"""
 
-    attributes=Attributes.query.filter(Attributes.user_id==user_id).one() 
-    print(attributes)
+    abilities=Abilities.query.filter(Abilities.user_id==user_id).one() 
     
-    return attributes
+    return abilities
 
 def get_skills_info(user_id):
     """the function to show the character sheet"""
