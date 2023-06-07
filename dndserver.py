@@ -34,6 +34,18 @@ def history():
 
     return render_template('history.html')
 
+@app.route('/skills')
+def skills():
+
+
+    return render_template('skills.html')
+
+@app.route('/Namefield')
+def namefield():
+
+
+    return render_template('Namefield.html')
+
 @app.route('/csheet')
 def show_sheet():
     #TODO: get user_id from a get or post request
