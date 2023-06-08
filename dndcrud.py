@@ -11,14 +11,18 @@ def create_user(email, user_name, password):
 
 
 def get_user_info(user_id):
-    """the function to show the character sheet"""
+    
 
     user=User.query.filter(User.user_id==user_id).one() 
     
     return user
 
+def get_user_by_email(email):
+    user_email = User.query.filter(User.email == email).first()
+    return user_email
+
 def get_cnamefield_info(user_id):
-    """the function to show the character sheet"""
+    
 
     namefield=Cnamefield.query.filter(Cnamefield.user_id==user_id).one() 
     
@@ -26,35 +30,35 @@ def get_cnamefield_info(user_id):
 
 
 def get_abilities_info(user_id):
-    """the function to show the character sheet"""
+    
 
     abilities=Abilities.query.filter(Abilities.user_id==user_id).one() 
     
     return abilities
 
 def get_skills_info(user_id):
-    """the function to show the character sheet"""
+    
 
     skills=Skills.query.filter(Skills.user_id==user_id).one() 
     
     return skills
 
 def get_otherstats_info(user_id):
-    """the function to show the character sheet"""
+    
 
     otherstats=Otherstats.query.filter(Otherstats.user_id==user_id).one() 
     
     return otherstats
 
 def get_equipment_info(user_id):
-    """the function to show the character sheet"""
+    
 
     equipment=Equipment.query.filter(Equipment.user_id==user_id).one() 
     
     return equipment
 
 def get_feats_info(user_id):
-    """the function to show the character sheet"""
+    
 
     feat=Feats.query.filter(Feats.user_id==user_id).one() 
     

@@ -81,26 +81,30 @@ def register_user():
     user_name = request.form.get('user_name')
     email = request.form.get('email')
     password = request.form.get('password')
-    new_user = dndcrud.create_user(user_name, email, password)
-    db.session.add(new_user)
-    db.session.commit()
+    print(email)
+    check_email = dndcrud.get_user_by_email(email)
 
-    print(new_user)
+    print(check_email)
+    
+    if check_email is not None:
+        flash("You can't use that email")
 
-    # check_email = dndcrud.get_user_by_email(email)
-
-    # print(check_email)
-    # if check_email is not None:
-    #     flash("You can't use that email")
-
-    # else:
-    #     new_user = dndcrud.create_user(email, user_name, password)
-    #     flash("Your account has been created")
-        # db.session.add(new_user)
-        # db.session.commit()
+    else:
+        new_user = dndcrud.create_user(email, user_name, password)
+        db.session.add(new_user)
+        db.session.commit()
+        flash("Your account has been created")
 
 
     return redirect('/menu')
+
+@app.route('/login', methods =['POST'] )
+def login():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+
+
 
 
 
