@@ -1,3 +1,8 @@
+{% for msg in get_flashed_messages() %}
+    <p class="flash-msg">
+      {{ msg }}
+    </p>
+    {% endfor %}
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -46,10 +51,10 @@ create new account
        <a href="/history"> history of D&D </a>
     </p>
     <p>
-        new to roleplaying?
+      <a href="/new-to-roleplaying"> new to roleplaying?</a>
     </p>
     <p>
-        new to D&D?
+      <a href="/new-to-dnd"> new to D&D? </a>
     </p>
     <p>
         
