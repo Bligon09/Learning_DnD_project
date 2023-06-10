@@ -10,6 +10,8 @@ def create_user(email, user_name, password):
     return user
 
 
+
+
 def get_user_info(user_id):
     
 
@@ -28,6 +30,12 @@ def get_cnamefield_info(user_id):
     
     return namefield
 
+def create_cnamefield_info(char_name, alignment, background, user_id):
+
+    cname=Cnamefield(char_name=char_name, alignment=alignment, background=background, user_id=user_id)
+
+    return cname
+
 
 def get_abilities_info(user_id):
     
@@ -35,6 +43,13 @@ def get_abilities_info(user_id):
     abilities=Abilities.query.filter(Abilities.user_id==user_id).one() 
     
     return abilities
+
+def create_abilities(str, dex, con, int, wis, cha, user_id):
+
+    ability_scores=Abilities(str=str, dex=dex, con=con, int=int, wis=wis, cha=cha, user_id=user_id)
+
+    return(ability_scores)
+
 
 def get_skills_info(user_id):
     

@@ -29,10 +29,8 @@ def register_user():
     user_name = request.form.get('user_name')
     email = request.form.get('email')
     password = request.form.get('password')
-    print(email)
     check_email = dndcrud.get_user_by_email(email)
 
-    print(check_email)
     
     if check_email is not None:
         flash("You can't use that email")
@@ -55,6 +53,7 @@ def login():
 
     if password==user.password:
         session['current_user']=user.user_id
+        print(session)
         flash(f'Logged in as {user.user_name}')
         return redirect ('/menu')
     else:
@@ -78,6 +77,28 @@ def history():
 
     return render_template('history.html')
 
+@app.route('/cnamefield')
+def cnamefield():
+    user=dndcrud.get_user_info(session['current_user'])
+
+    return render_template('cnamefield.html')
+
+@app.route('/cnamefield-info', methods =['POST'] )
+def add_namefield():
+    user=dndcrud.get_user_info(session['current_user'])
+    char_name = request.form.get('cname')
+    alignment = request.form.get('alignment')
+    background = request.form.get('backgrounds')
+    
+
+
+    namefield = dndcrud.create_cnamefield_info(char_name, alignment, background, user.user_id)
+    db.session.add(namefield)
+    db.session.commit()
+
+  
+    return redirect ('/cnamefield')
+
 @app.route('/asnskills')
 def asnskills():
 
@@ -85,32 +106,80 @@ def asnskills():
 
     return render_template('asnskills.html', ability_scores=ability_scores)
 
-@app.route('/cnamefield')
-def cnamefield():
+@app.route('/ability-info', methods=['POST'])
+def ability_info():
+
+    user=dndcrud.get_user_info(session['current_user'])
+
+    score_dict={}
+    score_dict['str']=int(request.form.get("str"))
+    score_dict['dex']=int(request.form.get("dex"))
+    score_dict['con']=int(request.form.get("con"))
+    score_dict['int']=int(request.form.get("int"))
+    score_dict['wis']=int(request.form.get("wis"))
+    score_dict['cha']=int(request.form.get("cha"))
 
 
-    return render_template('cnamefield.html')
+    abonus1=request.form.get('abonus1')
+    for ascore in score_dict:
+        if ascore==abonus1:
+            score_dict[ascore]+=1
+            print(score_dict[ascore])
 
-@app.route('/cnamefield-info', methods =['POST'] )
-def add_namefield():
-    char_name = request.form.get('cname')
-    alignment = request.form.get('alignment')
-    background = request.form.get('backgrounds')
-    user_id=session['current_user']
+    abonus2=request.form.get('abonus2')
+    for ascore in score_dict:
+        if ascore==abonus1:
+            score_dict[ascore]+=1
+            print(score_dict[ascore])
 
+    
 
-    namefield = dndcrud.create_cnamefield_info(char_name, alignment, background, user_id)
-    db.session.add(namefield)
+    ability_info=dndcrud.create_abilities(str=score_dict['str'],
+                                 dex=score_dict['dex'],
+                                 con=score_dict['con'],
+                                 int=score_dict['int'],
+                                 wis=score_dict['wis'],
+                                 cha=score_dict['cha'],
+                                 user_id=user.user_id)
+    
+    db.session.add(ability_info)
+    db.session.commit()
+    
+
+   
+
+    return redirect('/asnskills')
+
+@app.route('/skills-info', methods=['POST'])
+def skills_info():
+    user=dndcrud.get_user_info(session['current_user'])
+
+    rskill=request.form.get("rskill")
+    cskill1=request.form.get("cskill1")
+    cskill2=request.form.get("cskill2")
+
+    the_skills=dndcrud.create_skills(rskill=rskill,
+                                     cskill1=cskill1,
+                                     cskill2=cskill2,
+                                     user_id=user.user_id)
+    
+    db.session.add(the_skills)
     db.session.commit()
 
-  
-    return redirect ('/cnamefield')
+    return redirect('asnskills.html')
+
+
+
 
 @app.route('/otherstats')
 def otherstats():
 
 
     return render_template('otherstats.html')
+
+
+
+
 
 @app.route('/csheet')
 def show_sheet():
