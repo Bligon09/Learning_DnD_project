@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<title>
+    Namefield
+</title>
+
+</head>
+<body>
+
+<p>First thing's first, pick a name:</p>
+<form action="/cnamefield-info" method="POST">
+    <label for="char-name">Character Name</label>
+    <input type="text" name="cname" id="char-name">
+
+<p>
+text to explain class, level, race
+</p>
+<p>here's some text that explains alignments, NOW CHOOSE!!!!</p>
+
+
+    <label for="align-select">Alignment to select</label>
+    <select name="alignment" id="align-select">
+      <option value="LG">Lawful Good</option>
+      <option value="NG">Neutral Good</option>
+      <option value="CG">Chaotic good</option>
+      <option value="LN">Lawful Neutral</option>
+      <option value="NN">Neutral Neutral</option>
+      <option value="CN">Chaotic Neutral</option>
+      <option value="LE">Lawful Evil</option>
+      <option value="NE">Neutral Evil</option>
+      <option value="CE">Chaotic Evil</option>
+    </select>
+<p>text to explain what backgrounds are (yay!!!!!)</p>
+<p>here are some backgrounds. The book has more you can choose from, 
+    but these work really well for fighters</p>
+
+    Backgrounds:
+    <li>
+    <input type="radio" name="backgrounds" value="Folk-hero" id="Folk-hero">
+    <label for="Folk-hero">folk-hero:info</label></li>
+        
+    <li>
+    <input type="radio" name="backgrounds" value="Noble" id="Noble">
+    <label for="Noble">Noble: info</label></li>
+
+    <li>
+        <input type="radio" name="backgrounds" value="Outlander" id="Outlander">
+        <label for="Outlander">Outlander: info</label></li>
+
+    <li>
+        <input type="radio" name="backgrounds" value="Sailor" id="Sailor">
+        <label for="Sailor">Sailor: info</label></li>
+
+    <li>
+        <input type="radio" name="backgrounds" value="Soilder" id="Soilder">
+        <label for="Soilder">Soilder: info</label></li>
+
+
+        <p>
+            <input type="submit">
+          </p>
+  </form>
+
+
+</body>
+</html>

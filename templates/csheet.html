@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Character Sheet</title>
+  </head>
+
+  <body>
+   
+
+    <h1>{{ user.user_name }}</h1>
+
+    <h1>namefield</h1>
+
+  <li>character: {{ namefield.char_name }}</li>
+  <li>background: {{ namefield.background }}</li>
+  <li>alignment:{{ namefield.alignment }}</li>
+  <li>Class: fighter</li>
+  <li>Level: 1</li>
+  <li>Race:human, variant human</li>
+
+    <h1>ability scores</h1>
+        <li>str:{{ abilities.str }}</li>
+        <li>dex:{{ abilities.dex }}</li>
+        <li>con:{{ abilities.con }}</li>
+        <li>int:{{ abilities.int }}</li>
+        <li>wis:{{ abilities.wis }}</li>
+        <li>cha:{{ abilities.cha }}</li>
+        
+
+    <h1>skills</h1>
+    <li>{{ skills.skill1 }}</li>
+    <li>{{ skills.skill2 }}</li>
+    <li>{{ skills.skill3 }}</li>
+    <li>{{ skills.skill4 }}</li>
+    <li>{{ skills.skill5 }}</li>
+        
+
+    <h1>equipment</h1>
+
+  <li>Armor:{{ equipment.armor }}</li>
+  <li>Weapon:{{ equipment.weapons }}</li>
+  <li>Potions: {{ equipment.potion }}</li>
+  <li>Ring: {{ equipment.ring }}</li>
+
+
+
+    <h1>Otherstats</h1>
+  <li>proficiency bonus:{{ otherstats.proficiency_bonus }}</li>
+  <li>armor class:{{ otherstats.armor_class }}</li>
+  <li>hit points:{{ otherstats.hit_points }}</li>
+  <li>initative:{{ otherstats.initative }}</li>
+  <li>speed:{{ otherstats.speed }}</li>
+
+    <h1>feats</h1>
+  <li>{{ feats.feat1 }}</li>
+  <li>{{ feats.fighting_style }}</li>
+
+
+
+
+
+  </body>
+</html>

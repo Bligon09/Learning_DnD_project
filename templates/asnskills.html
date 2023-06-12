@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang = "en">
+  <head>
+    <title>Ability Scores and Skills</title>
+  </head>
+
+
+
+  <body>
+    <p>text here that explains how ability scores works.</p>
+    {% for score in ability_scores %}
+    <form action="/ability-info" method="POST">
+
+      <label for="{{ score }}">{{ score }}</label>
+      <select name="{{ score }}" id="{{ score }}">
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+      </select>
+    
+
+    {% endfor %}
+    
+    <p>"The human variant gets a +1 bonus to two abiliy scores."</p>
+
+    
+      <label for="abonus1">ability bonus 1</label>
+      <select name="abonus1" id="abonus1">
+        <option value="str">Strength</option>
+        <option value="dex">Dexterity</option>
+        <option value="con">Constitution</option>
+        <option value="int">Intelligence</option>
+        <option value="wis">Wisdom</option>
+        <option value="cha">Charisma</option>
+      </select>
+  
+   
+    
+      <label for="abonus2">ability bonus 2</label>
+      <select name="abonus2" id="abonus2">
+        <option value="str">Strength</option>
+        <option value="dex">Dexterity</option>
+        <option value="con">Constitution</option>
+        <option value="int">Intelligence</option>
+        <option value="wis">Wisdom</option>
+        <option value="cha">Charisma</option>
+      </select>
+      <p>
+        <input type="submit">
+      </p>
+      </form>
+      
+      <form ACTION="/skills-info" method="POST">
+    <p>text to explain how skills work</p>
+    <h1>Skills to select</h1>
+
+    <h2>Skill based on your race as a human(variant human):</h2>
+        <label for="rskill">skills to select</label>
+        <select name="rskill" id="rskill">
+          <option value="acrobatics">Acrobatics</option>
+          <option value="animal handling">Animal Handling</option>
+          <option value="arcana">Arcana</option>
+          <option value="athletics">Athletics</option>
+          <option value="deception">Deception</option>
+          <option value="history">History</option>
+          <option value="insight">Insight</option>
+          <option value="intimidation">Intimidation</option>
+          <option value="investigation">Investigation</option>
+          <option value="medicine">Medicine</option>
+          <option value="nature">Nature</option>
+          <option value="perception">Perception</option>
+          <option value="performance">Performance</option>
+          <option value="persuasion">Persuasion</option>
+          <option value="religion">Religion</option>
+          <option value="sleight of hand">Sleight of hand</option>
+          <option value="stealth">Stealth</option>
+          <option value="survival">Survival</option>
+        </select>
+    
+
+      <p>two skills proficiencies granted by your class</p>
+    
+        <label for="cskill1">skills to select</label>
+        <select name="cskill1" id="cskill1">
+          <option value="acrobatics">Acrobatics</option>
+          <option value="animal handling">Animal Handling</option>
+          <option value="athletics">Athletics</option>
+          <option value="history">History</option>
+          <option value="insight">Insight</option>
+          <option value="intimidation">Intimidation</option>
+          <option value="perception">Perception</option>
+          <option value="survival">Survival</option>
+        </select>
+    
+
+      
+        <label for="cskill2">skills to select</label>
+        <select name="cskill2" id="cskill2">
+          <option value="acrobatics">Acrobatics</option>
+          <option value="animal handling">Animal Handling</option>
+          <option value="athletics">Athletics</option>
+          <option value="history">History</option>
+          <option value="insight">Insight</option>
+          <option value="intimidation">Intimidation</option>
+          <option value="perception">Perception</option>
+          <option value="survival">Survival</option>
+        </select>
+
+        <p>
+          <input type="submit">
+        </p>
+      </form>
+
+  
+  </body>
+</html>
