@@ -127,9 +127,9 @@ def ability_info():
             print(score_dict[ascore])
 
     abonus2=request.form.get('abonus2')
-    for ascore in score_dict:
-        if ascore==abonus1:
-            score_dict[ascore]+=1
+    for ascore2 in score_dict:
+        if ascore2==abonus2:
+            score_dict[ascore2]+=1
             print(score_dict[ascore])
 
     
@@ -157,18 +157,25 @@ def skills_info():
     rskill=request.form.get("rskill")
     cskill1=request.form.get("cskill1")
     cskill2=request.form.get("cskill2")
+    namefield=dndcrud.get_cnamefield_info(user.user_id)
 
     the_skills=dndcrud.create_skills(rskill=rskill,
                                      cskill1=cskill1,
                                      cskill2=cskill2,
+                                     background=namefield.background,
                                      user_id=user.user_id)
     
     db.session.add(the_skills)
     db.session.commit()
 
-    return redirect('asnskills.html')
+    return redirect('/asnskills')
 
 
+@app.route('/feats')
+def feats_page():
+
+
+    return render_template('feats.html')
 
 
 @app.route('/otherstats')

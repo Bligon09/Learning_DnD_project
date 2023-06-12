@@ -58,6 +58,32 @@ def get_skills_info(user_id):
     
     return skills
 
+def create_skills(rskill, cskill1, cskill2, background,  user_id):
+    
+    if background == "Folk-hero":
+        bskill1="Animal handling" 
+        bskill2= "Survival"
+    if background == "Noble":
+        bskill1="History" 
+        bskill2= "Persuasion"
+    if background == "Outlander":
+        bskill1="Athletics" 
+        bskill2= "Survival"
+    if background == "Sailor":
+        bskill1="Athletics"
+        bskill2= "Perception"
+    if background == "Soilder":
+        bskill1="Athletics"
+        bskill2= "Intimidation"
+    
+    
+
+    the_skills=Skills(skill1=rskill, skill2=cskill1, skill3=cskill2, skill4=bskill1, skill5=bskill2, user_id= user_id)
+
+    return the_skills
+
+
+
 def get_otherstats_info(user_id):
     
 
