@@ -177,12 +177,99 @@ def feats_page():
 
     return render_template('feats.html')
 
+@app.route('/create-feats', methods=['POST'])
+def add_feats():
+    user=dndcrud.get_user_info(session['current_user'])
+
+    feat=request.form.get('feats')
+    fighting_style=request.form.get('fighting style')
+
+    feats=dndcrud.create_feats(feat=feat, 
+                               fighting_style=fighting_style, 
+                               user_id=user.user_id)
+    
+    db.session.add(feats)
+    db.session.commit()
+    return redirect('/feats')
+
+
+
+@app.route('/equipment')
+def equipment_page():
+
+    return render_template('equipment.html')
+
+@app.route('/add-equipment', methods=['POST'])
+def add_equipment():
+    """
+    This is probably the most complicated part so far. 
+    A lot of this will be decided on the backend, running through the
+    options in the book, but narrowed down and selected 
+    based on the higher of str or dex, and special cavaets if they get
+    the styles 'great weapon,' 'two weapon,' and 'archery'
+    """
+
+    user=dndcrud.get_user_info(session['current_user'])
+
+    feats=dndcrud.get_feats_info(user.user_id)
+    abilities=dndcrud.get_abilities_info(user.user_id)
+    equipment_dict={}
+    equipment_dict['option4']="explorer's pack"
+
+    if abilities.dex > abilities.str:
+        equipment_dict['option1']="leather armor, longbow, 20 arrows"
+        equipment_dict['option2']="rapier and dagger"
+        equipment_dict['option3']="2 hand axes"
+        
+    else:
+        equipment_dict['option1']="chainmail"
+        equipment_dict['option2']="longsword and shield"
+        equipment_dict['option3']="2 hand axes"
+
+    if feats.fighting_style == "Great Weapon Fighting":
+        equipment_dict['option2']="Great axe and shield"
+    
+    if feats.fighting_style == "Two-weapon fighting":
+        equipment_dict['option2']="two short swords"
+        equipment_dict['option3']="light crossbow and 20 bolts"
+
+    equipment=dndcrud.create_equipment(option1=equipment_dict['option1'],
+                                       option2=equipment_dict['option2'],
+                                       option3=equipment_dict['option3'],
+                                       option4=equipment_dict['option4'],
+                                       user_id=user.user_id)
+    
+    db.session.add(equipment)
+    db.session.commit()
+                  
+
+    return redirect ('/equipment')
+
+
 
 @app.route('/otherstats')
 def otherstats():
 
 
     return render_template('otherstats.html')
+
+@app.route('/otherstats-add', methods=['POST'])
+def otherstats_add():
+
+    user=dndcrud.get_user_info(session['current_user'])
+    namefield=dndcrud.get_cnamefield_info(user.user_id)
+    abilities=dndcrud.get_abilities_info(user.user_id)
+    skills=dndcrud.get_skills_info(user.user_id)
+    equipment=dndcrud.get_equipment_info(user.user_id)
+    feats=dndcrud.get_feats_info(user.user_id)
+
+    hit_points=abilities.con+10
+    """
+    still need to build out the rest of this code
+    """
+
+
+    return redirect ('/otherstats')
 
 
 
@@ -191,15 +278,14 @@ def otherstats():
 @app.route('/csheet')
 def show_sheet():
     #TODO: get user_id from a get or post request
-    user=dndcrud.get_user_info(1)
-    namefield=dndcrud.get_cnamefield_info(1)
-    abilities=dndcrud.get_abilities_info(1)
-    skills=dndcrud.get_skills_info(1)
-    otherstats=dndcrud.get_otherstats_info(1)
-    equipment=dndcrud.get_equipment_info(1)
-    feats=dndcrud.get_feats_info(1)
-    #TODO: get user_id from a get or post request
+    user=dndcrud.get_user_info(session['current_user'])
+    namefield=dndcrud.get_cnamefield_info(user.user_id)
+    abilities=dndcrud.get_abilities_info(user.user_id)
+    skills=dndcrud.get_skills_info(user.user_id)
+    equipment=dndcrud.get_equipment_info(user.user_id)
+    feats=dndcrud.get_feats_info(user.user_id)
 
+    otherstats=dndcrud.get_otherstats_info(1)
     return render_template('csheet.html', 
                            user=user, 
                            namefield=namefield, 

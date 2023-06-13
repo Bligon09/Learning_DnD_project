@@ -98,10 +98,11 @@ class Equipment(db.Model):
     __tablename__='equipment'
 
     user_id=db.Column(db.Integer, db.ForeignKey('users.user_id'), primary_key=True)
-    armor = db.Column(db.VARCHAR(25))
-    weapons = db.Column(db.VARCHAR(25))
-    potion = db.Column(db.VARCHAR(25))
-    ring = db.Column(db.VARCHAR(25))
+    option1 = db.Column(db.String)
+    option2 = db.Column(db.String)
+    option3 = db.Column(db.String)
+    option4 = db.Column(db.String)
+    
 
     user = db.relationship('User', back_populates = "equipment")
 
@@ -110,7 +111,7 @@ class Feats(db.Model):
     __tablename__='feats'
 
     user_id=db.Column(db.Integer, db.ForeignKey('users.user_id'), primary_key=True)
-    feat1 = db.Column(db.VARCHAR(50))
+    feat = db.Column(db.VARCHAR(50))
     fighting_style = db.Column(db.VARCHAR(50))
 
     user = db.relationship('User', back_populates = "feats")

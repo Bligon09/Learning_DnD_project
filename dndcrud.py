@@ -91,12 +91,24 @@ def get_otherstats_info(user_id):
     
     return otherstats
 
+def create_equipment(option1, option2, option3, option4, user_id):
+
+    equipment=Equipment(option1=option1, option2=option2, option3=option3, option4=option4, user_id=user_id)
+
+    return equipment
+
 def get_equipment_info(user_id):
     
 
     equipment=Equipment.query.filter(Equipment.user_id==user_id).one() 
     
     return equipment
+
+def create_feats(feat, fighting_style, user_id):
+
+    feats=Feats(feat=feat, fighting_style=fighting_style, user_id=user_id)
+
+    return feats
 
 def get_feats_info(user_id):
     
