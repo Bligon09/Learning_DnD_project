@@ -9,7 +9,7 @@
 <title>
     MAIN MENU
 </title>
-<script src='/static/js/dndjava.js'></script>
+
 </head>
 
 <h2>Log In</h2>
@@ -29,9 +29,9 @@
 create new account
 <form action="/user" method="POST">
     <p>
-        Email <input type="text" name="email">
+        Email <input type="text" id="create-email" name="email">
     </p>
-    
+    <p id="email-message"></p>
     <p>
         User name <input type="text" name="user_name"> 
         
@@ -42,7 +42,7 @@ create new account
     </p>
 
     <p>
-      <input type="submit">
+      <input id=create_account_button type="submit">
     </p>
   </form>
 <div id="menu-body" class="menu">
@@ -61,6 +61,7 @@ create new account
     </p>
 
 </div>
+<script src='/static/js/dndjava.js'></script>
 </body>
 
 </html>
