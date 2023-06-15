@@ -13,8 +13,8 @@ os.system('createdb dnd-learn')
 dndmodel.connect_to_db(dndserver.app)
 dndmodel.db.create_all()
 
-def create_test_user(user):
-    dndmodel.db.session.add(user)
+def add_and_commit(info):
+    dndmodel.db.session.add(info)
     dndmodel.db.session.commit()
 
 
@@ -26,10 +26,10 @@ tother=dndmodel.Otherstats(proficiency_bonus=5, armor_class=6, hit_points=7, ini
 aequip=dndmodel.Equipment(option1='leather', option2='swords', option3='healing', option4='shiny', user_id=1)
 tfeat=dndmodel.Feats(feat='run_fast', fighting_style='bold', user_id=1)
 
-create_test_user(test2)
-create_test_user(tname)
-create_test_user(tabil)
-create_test_user(tskill)
-create_test_user(tother)
-create_test_user(aequip)
-create_test_user(tfeat)
+add_and_commit(test2)
+add_and_commit(tname)
+add_and_commit(tabil)
+add_and_commit(tskill)
+add_and_commit(tother)
+add_and_commit(aequip)
+add_and_commit(tfeat)

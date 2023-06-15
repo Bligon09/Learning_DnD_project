@@ -1,6 +1,6 @@
 
 from flask import (Flask, render_template, request, flash, session,
-                   redirect)
+                   redirect, jsonify)
 from dndmodel import connect_to_db, db
 import dndcrud
 
@@ -43,6 +43,18 @@ def register_user():
 
 
     return redirect('/menu')
+
+@app.route('/verify-email.json/<email>')
+def verify_email(email):
+
+    check_email = dndcrud.get_user_by_email(email)
+
+    
+    if check_email is not None:
+        return jsonify({'checked email': 'Email is not available for use'})
+    else:
+        return jsonify({'checked email': 'Email is available for use'})
+
 
 @app.route('/login', methods =['POST'] )
 def login():

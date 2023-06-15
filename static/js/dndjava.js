@@ -19,6 +19,11 @@ emailField.addEventListener('change', function(evt) {
 
         document.getElementById('email-message').innerText=""
 
+        fetch(`/verify-email.json/${emailInput}`)
+            .then((response) => response.json())
+            // .then(alert); how to get the data from here and post it to the html like above
+
     };
 
 })
+
