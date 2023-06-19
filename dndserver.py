@@ -51,9 +51,9 @@ def verify_email(email):
 
     
     if check_email is not None:
-        return jsonify({'checked email': 'Email is not available for use'})
+        return {'checked email': 'Email is not available for use'}
     else:
-        return jsonify({'checked email': 'Email is available for use'})
+        return {'checked email': 'Email is available for use'}
 
 
 @app.route('/login', methods =['POST'] )
@@ -71,6 +71,11 @@ def login():
     else:
         flash('Wrong password, try again')
         return redirect ('/menu')
+    
+@app.route('/logout', methods =['POST'] )
+def logout():
+    del session['current_user']
+    return redirect ('/menu')
 
 @app.route('/new-to-roleplaying')
 def newroleplayer():
@@ -91,7 +96,7 @@ def history():
 
 @app.route('/cnamefield')
 def cnamefield():
-    user=dndcrud.get_user_info(session['current_user'])
+   
 
     return render_template('cnamefield.html')
 
@@ -101,13 +106,16 @@ def add_namefield():
     char_name = request.form.get('cname')
     alignment = request.form.get('alignment')
     background = request.form.get('backgrounds')
+
+    check_user=dndcrud.get_cnamefield_info(user.user_id)
     
-
-
-    namefield = dndcrud.create_cnamefield_info(char_name, alignment, background, user.user_id)
-    db.session.add(namefield)
-    db.session.commit()
-
+    if check_user.user_id == user.user_id:
+        update_user=dndcrud.updating_cname(char_name, alignment, background, user.user_id)
+        db.session.commit()
+    else:
+        namefield = dndcrud.create_cnamefield_info(char_name, alignment, background, user.user_id)
+        db.session.add(namefield)
+        db.session.commit()
   
     return redirect ('/cnamefield')
 
@@ -268,12 +276,12 @@ def otherstats():
 @app.route('/otherstats-add', methods=['POST'])
 def otherstats_add():
 
-    user=dndcrud.get_user_info(session['current_user'])
-    namefield=dndcrud.get_cnamefield_info(user.user_id)
-    abilities=dndcrud.get_abilities_info(user.user_id)
-    skills=dndcrud.get_skills_info(user.user_id)
-    equipment=dndcrud.get_equipment_info(user.user_id)
-    feats=dndcrud.get_feats_info(user.user_id)
+    # user=dndcrud.get_user_info(1)
+    namefield=dndcrud.get_cnamefield_info(1)
+    abilities=dndcrud.get_abilities_info(1)
+    skills=dndcrud.get_skills_info(1)
+    equipment=dndcrud.get_equipment_info(1)
+    feats=dndcrud.get_feats_info(1)
 
     hit_points=abilities.con+10
     """
@@ -290,12 +298,12 @@ def otherstats_add():
 @app.route('/csheet')
 def show_sheet():
     #TODO: get user_id from a get or post request
-    user=dndcrud.get_user_info(session['current_user'])
-    namefield=dndcrud.get_cnamefield_info(user.user_id)
-    abilities=dndcrud.get_abilities_info(user.user_id)
-    skills=dndcrud.get_skills_info(user.user_id)
-    equipment=dndcrud.get_equipment_info(user.user_id)
-    feats=dndcrud.get_feats_info(user.user_id)
+    user=dndcrud.get_user_info(1)
+    namefield=dndcrud.get_cnamefield_info(1)
+    abilities=dndcrud.get_abilities_info(1)
+    skills=dndcrud.get_skills_info(1)
+    equipment=dndcrud.get_equipment_info(1)
+    feats=dndcrud.get_feats_info(1)
 
     otherstats=dndcrud.get_otherstats_info(1)
     return render_template('csheet.html', 

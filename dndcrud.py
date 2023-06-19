@@ -23,10 +23,23 @@ def get_user_by_email(email):
     user_email = User.query.filter(User.email == email).first()
     return user_email
 
+def updating_cname(char_name, alignment, background, user_id):
+    
+    namefield=Cnamefield.query.filter(Cnamefield.user_id==user_id).one()
+
+    
+
+    namefield.char_name = char_name
+    namefield.alignment = alignment
+    namefield.background = background
+
+    
+    return namefield
+
 def get_cnamefield_info(user_id):
     
 
-    namefield=Cnamefield.query.filter(Cnamefield.user_id==user_id).one() 
+    namefield=Cnamefield.query.filter(Cnamefield.user_id==user_id).first() 
     
     return namefield
 
