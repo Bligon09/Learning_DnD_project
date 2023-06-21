@@ -95,7 +95,7 @@ def create_skills(rskill, cskill1, cskill2, background,  user_id):
 
     return the_skills
 
-
+# def create_otherstats():
 
 def get_otherstats_info(user_id):
     

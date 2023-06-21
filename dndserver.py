@@ -210,6 +210,8 @@ def add_feats():
     
     db.session.add(feats)
     db.session.commit()
+
+
     return redirect('/feats')
 
 
@@ -235,16 +237,19 @@ def add_equipment():
     abilities=dndcrud.get_abilities_info(user.user_id)
     equipment_dict={}
     equipment_dict['option4']="explorer's pack"
+    armor_class = 0
 
     if abilities.dex > abilities.str:
         equipment_dict['option1']="leather armor, longbow, 20 arrows"
         equipment_dict['option2']="rapier and dagger"
         equipment_dict['option3']="2 hand axes"
+        armor_class= 11 + abilities.dex
         
     else:
         equipment_dict['option1']="chainmail"
         equipment_dict['option2']="longsword and shield"
         equipment_dict['option3']="2 hand axes"
+        armor_class=16
 
     if feats.fighting_style == "Great Weapon Fighting":
         equipment_dict['option2']="Great axe and shield"
@@ -261,7 +266,24 @@ def add_equipment():
     
     db.session.add(equipment)
     db.session.commit()
-                  
+
+    ability_mod_con= (abilities.con-10)//2
+    ability_mod_dex= (abilities.dex-10)//2
+
+    hit_points=ability_mod_con+10
+    proficiency_bonus= 2
+    speed=30
+    initiative=ability_mod_dex
+
+    # otherstats= dndcrud.create_otherstats(proficiency_bonus=proficiency_bonus, 
+    #                                       armor_class=armor_class, 
+    #                                       hit_points=hit_points, 
+    #                                       initiative, speed, user.user_id)
+
+    # db.session.add(otherstats)
+    # db.session.commit()
+
+
 
     return redirect ('/equipment')
 
