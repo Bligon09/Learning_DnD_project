@@ -275,13 +275,14 @@ def add_equipment():
     speed=30
     initiative=ability_mod_dex
 
-    # otherstats= dndcrud.create_otherstats(proficiency_bonus=proficiency_bonus, 
-    #                                       armor_class=armor_class, 
-    #                                       hit_points=hit_points, 
-    #                                       initiative, speed, user.user_id)
+    otherstats= dndcrud.create_otherstats(proficiency_bonus=proficiency_bonus, 
+                                          armor_class=armor_class, 
+                                          hit_points=hit_points, 
+                                          initiative= initiative, 
+                                          speed=speed, user_id=user.user_id)
 
-    # db.session.add(otherstats)
-    # db.session.commit()
+    db.session.add(otherstats)
+    db.session.commit()
 
 
 
@@ -295,39 +296,20 @@ def otherstats():
 
     return render_template('otherstats.html')
 
-@app.route('/otherstats-add', methods=['POST'])
-def otherstats_add():
-
-    # user=dndcrud.get_user_info(1)
-    namefield=dndcrud.get_cnamefield_info(1)
-    abilities=dndcrud.get_abilities_info(1)
-    skills=dndcrud.get_skills_info(1)
-    equipment=dndcrud.get_equipment_info(1)
-    feats=dndcrud.get_feats_info(1)
-
-    hit_points=abilities.con+10
-    """
-    still need to build out the rest of this code
-    """
-
-
-    return redirect ('/otherstats')
-
-
-
 
 
 @app.route('/csheet')
 def show_sheet():
     #TODO: get user_id from a get or post request
-    user=dndcrud.get_user_info(1)
-    namefield=dndcrud.get_cnamefield_info(1)
-    abilities=dndcrud.get_abilities_info(1)
-    skills=dndcrud.get_skills_info(1)
-    equipment=dndcrud.get_equipment_info(1)
-    feats=dndcrud.get_feats_info(1)
+    user=dndcrud.get_user_info(session['current_user'])
+    namefield=dndcrud.get_cnamefield_info(session['current_user'])
+    abilities=dndcrud.get_abilities_info(session['current_user'])
+    skills=dndcrud.get_skills_info(session['current_user'])
+    equipment=dndcrud.get_equipment_info(session['current_user'])
+    feats=dndcrud.get_feats_info(session['current_user'])
 
-    otherstats=dndcrud.get_otherstats_info(1)
+    otherstats=dndcrud.get_otherstats_info(session['current_user'])
+    
     return render_template('csheet.html', 
                            user=user, 
                            namefield=namefield, 
