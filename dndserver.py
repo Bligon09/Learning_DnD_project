@@ -109,7 +109,7 @@ def add_namefield():
 
     check_user=dndcrud.get_cnamefield_info(user.user_id)
     
-    if check_user.user_id == user.user_id:
+    if check_user is not None:
         update_user=dndcrud.updating_cname(char_name, alignment, background, user.user_id)
         db.session.commit()
     else:
@@ -124,7 +124,16 @@ def asnskills():
 
     ability_scores=["str", "dex", "con", "int", "wis", "cha"]
 
-    return render_template('asnskills.html', ability_scores=ability_scores)
+    namefield=dndcrud.get_cnamefield_info(session['current_user'])
+    background=namefield.background
+
+    return render_template('asnskills.html', ability_scores=ability_scores,
+                            background=background, 
+                            Folk="Folk-hero",
+                            Noble="Noble",
+                            Outlander="Outlander",
+                            Sailor="Sailor",
+                            Solider="Solider")
 
 @app.route('/ability-info', methods=['POST'])
 def ability_info():
@@ -144,26 +153,36 @@ def ability_info():
     for ascore in score_dict:
         if ascore==abonus1:
             score_dict[ascore]+=1
-            print(score_dict[ascore])
 
     abonus2=request.form.get('abonus2')
     for ascore2 in score_dict:
         if ascore2==abonus2:
             score_dict[ascore2]+=1
-            print(score_dict[ascore])
 
-    
 
-    ability_info=dndcrud.create_abilities(str=score_dict['str'],
+    check_abil=dndcrud.get_abilities_info(session['current_user'])
+
+    if check_abil is not None:
+        ability_info=dndcrud.updating_abilities(str=score_dict['str'],
                                  dex=score_dict['dex'],
                                  con=score_dict['con'],
                                  int=score_dict['int'],
                                  wis=score_dict['wis'],
                                  cha=score_dict['cha'],
                                  user_id=user.user_id)
-    
-    db.session.add(ability_info)
-    db.session.commit()
+        db.session.add(ability_info)
+        db.session.commit()
+    else:
+        ability_info=dndcrud.create_abilities(str=score_dict['str'],
+                                    dex=score_dict['dex'],
+                                    con=score_dict['con'],
+                                    int=score_dict['int'],
+                                    wis=score_dict['wis'],
+                                    cha=score_dict['cha'],
+                                    user_id=user.user_id)
+        
+        db.session.add(ability_info)
+        db.session.commit()
     
 
    
@@ -179,14 +198,47 @@ def skills_info():
     cskill2=request.form.get("cskill2")
     namefield=dndcrud.get_cnamefield_info(user.user_id)
 
-    the_skills=dndcrud.create_skills(rskill=rskill,
+    background=namefield.background
+
+    bskill1=""
+    bskill2=""
+
+    if background == "Folk-hero":
+        bskill1="Animal handling" 
+        bskill2= "Survival"
+    if background == "Noble":
+        bskill1="History" 
+        bskill2= "Persuasion"
+    if background == "Outlander":
+        bskill1="Athletics" 
+        bskill2= "Survival"
+    if background == "Sailor":
+        bskill1="Athletics"
+        bskill2= "Perception"
+    if background == "Solider":
+        bskill1="Athletics"
+        bskill2= "Intimidation"
+
+    check_skills=dndcrud.get_skills_info(session['current_user'])
+
+    if check_skills is not None:
+        the_skills=dndcrud.update_skills(rskill=rskill,
                                      cskill1=cskill1,
                                      cskill2=cskill2,
-                                     background=namefield.background,
+                                     bskill1=bskill1,
+                                     bskill2=bskill2,
                                      user_id=user.user_id)
-    
-    db.session.add(the_skills)
-    db.session.commit()
+        db.session.add(the_skills)
+        db.session.commit()
+    else:
+        the_skills=dndcrud.create_skills(rskill=rskill,
+                                        cskill1=cskill1,
+                                        cskill2=cskill2,
+                                        bskill1=bskill1,
+                                        bskill2=bskill2,
+                                        user_id=user.user_id)
+        db.session.add(the_skills)
+        db.session.commit()
 
     return redirect('/asnskills')
 
@@ -203,13 +255,24 @@ def add_feats():
 
     feat=request.form.get('feats')
     fighting_style=request.form.get('fighting style')
+    
+    check_feats=dndcrud.get_feats_info(session['current_user'])
 
-    feats=dndcrud.create_feats(feat=feat, 
+    if check_feats is not None:
+        feats=dndcrud.update_feats(feat=feat, 
                                fighting_style=fighting_style, 
                                user_id=user.user_id)
     
-    db.session.add(feats)
-    db.session.commit()
+        db.session.add(feats)
+        db.session.commit()
+
+    else:
+        feats=dndcrud.create_feats(feat=feat, 
+                                fighting_style=fighting_style, 
+                                user_id=user.user_id)
+        
+        db.session.add(feats)
+        db.session.commit()
 
 
     return redirect('/feats')
@@ -258,14 +321,28 @@ def add_equipment():
         equipment_dict['option2']="two short swords"
         equipment_dict['option3']="light crossbow and 20 bolts"
 
-    equipment=dndcrud.create_equipment(option1=equipment_dict['option1'],
-                                       option2=equipment_dict['option2'],
-                                       option3=equipment_dict['option3'],
-                                       option4=equipment_dict['option4'],
-                                       user_id=user.user_id)
+    check_equipment=dndcrud.get_equipment_info(user.user_id)
+
+    if check_equipment is not None:
+
+        equipment=dndcrud.update_equipment(option1=equipment_dict['option1'],
+                                            option2=equipment_dict['option2'],
+                                            option3=equipment_dict['option3'],
+                                            option4=equipment_dict['option4'],
+                                            user_id=user.user_id)
     
-    db.session.add(equipment)
-    db.session.commit()
+        db.session.add(equipment)
+        db.session.commit()
+    
+    else:
+        equipment=dndcrud.create_equipment(option1=equipment_dict['option1'],
+                                            option2=equipment_dict['option2'],
+                                            option3=equipment_dict['option3'],
+                                            option4=equipment_dict['option4'],
+                                            user_id=user.user_id)
+    
+        db.session.add(equipment)
+        db.session.commit()
 
     ability_mod_con= (abilities.con-10)//2
     ability_mod_dex= (abilities.dex-10)//2
@@ -275,14 +352,27 @@ def add_equipment():
     speed=30
     initiative=ability_mod_dex
 
-    otherstats= dndcrud.create_otherstats(proficiency_bonus=proficiency_bonus, 
+    check_otherstats=dndcrud.get_otherstats_info(user.user_id)
+    
+    if check_otherstats is not None:
+        otherstats= dndcrud.update_otherstats(proficiency_bonus=proficiency_bonus, 
+                                          armor_class=armor_class, 
+                                          hit_points=hit_points, 
+                                          initiative= initiative, 
+                                          speed=speed, user_id=user.user_id)
+        
+        db.session.add(otherstats)
+        db.session.commit()
+        
+    else:
+        otherstats= dndcrud.create_otherstats(proficiency_bonus=proficiency_bonus, 
                                           armor_class=armor_class, 
                                           hit_points=hit_points, 
                                           initiative= initiative, 
                                           speed=speed, user_id=user.user_id)
 
-    db.session.add(otherstats)
-    db.session.commit()
+        db.session.add(otherstats)
+        db.session.commit()
 
 
 

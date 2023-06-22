@@ -58,6 +58,23 @@
     <p>Skills represent training that your character has had, and something that they are talented in. If you have a proficiency in a skill, 
       that means if the DM ask for a  roll with that skill, you get to add your proficiency bonus. You already get to skills based on your background, 
       now you get to choose skills based on your race, and class.</p>
+
+      {% if background == 'Folk-hero' %}
+        <p> For a folk hero background, you already have skill proficiencies in Animal handling, and survival.</p>
+      {% endif %}
+      {% if background == 'Noble' %}
+        <p> For a Noble background, you already have skill proficiencies in history, and persuasion.</p>
+      {% endif %}
+      {% if background == 'Outlander' %}
+        <p> For an Outlander background, you already have skill proficiencies in athletics, and survival.</p>
+      {% endif %}
+      {% if background == 'Sailor' %}
+        <p> For a Sailor background, you already have skill proficiencies in athletics, and perception.</p>
+      {% endif %}
+      {% if background == 'Solider' %}
+        <p> For a Solider background, you already have skill proficiencies in , and survival.</p>
+      {% endif %}
+
     <h1>Skills to select</h1>
 
     <h2>Skill based on your race as a human(variant human):</h2>

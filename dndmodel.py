@@ -88,7 +88,7 @@ class Otherstats(db.Model):
     proficiency_bonus=db.Column(db.Integer)
     armor_class = db.Column(db.Integer)
     hit_points = db.Column(db.Integer)
-    initative = db.Column(db.Integer)
+    initiative = db.Column(db.Integer)
     speed = db.Column(db.Integer)
 
     user = db.relationship('User', uselist=False, back_populates = "otherstats")
