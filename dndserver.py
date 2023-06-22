@@ -119,6 +119,8 @@ def add_namefield():
   
     return redirect ('/cnamefield')
 
+
+
 @app.route('/asnskills')
 def asnskills():
 
@@ -127,13 +129,28 @@ def asnskills():
     namefield=dndcrud.get_cnamefield_info(session['current_user'])
     background=namefield.background
 
-    return render_template('asnskills.html', ability_scores=ability_scores,
-                            background=background, 
-                            Folk="Folk-hero",
-                            Noble="Noble",
-                            Outlander="Outlander",
-                            Sailor="Sailor",
-                            Solider="Solider")
+    return render_template('asnskills.html', 
+                           ability_scores=ability_scores,
+                            background=background)
+
+
+@app.route('/get-bskills.json')
+def get_bskills():
+    namefield=dndcrud.get_cnamefield_info(session['current_user'])
+
+    background= namefield.background
+    if background=="Folk-hero":
+        return {'bskill1': 'Animal Handling', 'bskill2': 'Survival'}
+    if background=="Noble":
+        return {'bskill1': 'History', 'bskill2': 'Persuasion'}
+    if background=="Outlander":
+        return {'bskill1': 'Athletics', 'bskill2': 'Survival'}
+    if background=="Sailor":
+        return {'bskill1': 'Athletics', 'bskill2': 'Perception'}
+    if background=="Solider":
+        return {'bskill1': 'Athletics', 'bskill2': 'Intimidation'}
+    
+
 
 @app.route('/ability-info', methods=['POST'])
 def ability_info():

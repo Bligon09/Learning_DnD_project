@@ -16,8 +16,8 @@ document.getElementById('ability-scores').addEventListener('submit', evt=>{
             alert("you must select different scores for the abilities, and different bonus.")
         }
 
-    const abonus1 = document.getElementById('abonus1')
-    const abonus2 = document.getElementById('abonus2')
+    const abonus1 = document.getElementById('abonus1').value
+    const abonus2 = document.getElementById('abonus2').value
 
     const abilBonus = new Set([abonus1, abonus2])
 
