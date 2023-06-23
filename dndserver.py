@@ -3,7 +3,7 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
 from dndmodel import connect_to_db, db
 import dndcrud
-
+from random import randint
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
@@ -289,6 +289,14 @@ def add_feats():
                                 user_id=user.user_id)
         
         db.session.add(feats)
+        db.session.commit()
+
+    if feat == "durable":
+        abilities=dndcrud.get_abilities_info(user_id=user.user_id)
+        con=abilities.con
+
+        update_con=dndcrud.durable_feat(con=con, user_id=user.user_id)
+        db.session.add(update_con)
         db.session.commit()
 
 

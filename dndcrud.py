@@ -70,6 +70,12 @@ def updating_abilities(str, dex, con, int, wis, cha, user_id):
 
     return abilities
 
+def durable_feat(con, user_id):
+    abilities=Abilities.query.filter(Abilities.user_id==user_id).first()
+
+    abilities.con=con
+    return abilities
+
 def create_abilities(str, dex, con, int, wis, cha, user_id):
 
     ability_scores=Abilities(str=str, dex=dex, con=con, int=int, wis=wis, cha=cha, user_id=user_id)
