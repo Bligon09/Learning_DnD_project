@@ -415,7 +415,6 @@ def otherstats():
 
 @app.route('/csheet')
 def show_sheet():
-    #TODO: get user_id from a get or post request
     user=dndcrud.get_user_info(session['current_user'])
     namefield=dndcrud.get_cnamefield_info(session['current_user'])
     abilities=dndcrud.get_abilities_info(session['current_user'])
@@ -433,6 +432,46 @@ def show_sheet():
                            otherstats=otherstats,
                            equipment=equipment,
                            feats=feats)
+
+
+@app.route('/to_the_table')
+def to_the_table():
+
+    namefield=dndcrud.get_cnamefield_info(session['current_user'])
+    abilities=dndcrud.get_abilities_info(session['current_user'])
+    skills=dndcrud.get_skills_info(session['current_user'])
+    abilmodname=""
+    abilmod=0
+    if skills.skill2 == "Acrobatics":
+        abilmod=(abilities.dex-10)//2
+        abilmodname="Dexterity"
+    if skills.skill2 == "Animal Handling" or "Insight" or "Perception" or "Survival":
+        abilmod=(abilities.wis-10)//2
+        abilmodname="Wisdom"
+    if skills.skill2 == "Athletics":
+        abilmod=(abilities.str-10)//2
+        abilmodname="Strength"
+    if skills.skill2 == "History":
+        abilmod=(abilities.int-10)//2
+        abilmodname="Intelligence"
+    if skills.skill2 == "Intimidation":
+        abilmod=(abilities.cha-10)//2
+        abilmodname="Charisma"
+    
+
+    
+    return render_template('to_the_table.html',  
+                           abilmod=abilmod, 
+                           skills=skills,
+                           abilmodname=abilmodname)
+
+@app.route('/rolld20.json')
+def rolld20():
+
+    d20 = randint(1,20)
+
+    
+    return {'result':d20}
 
 
 

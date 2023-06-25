@@ -1,7 +1,34 @@
-things to know once you get to the table:
+<!doctype html>
+<html>
+  <head>
+    <title>At-the-table</title>
+  </head>
+  <body>
 
-advantage
-disadvantage
-table etiquett
+    Skill rolls will look like this:
+    Roll a d20.
+    Add the relevant ability score mod. 
+    Then add your proficiency bonus. 
+    
+    For instance, let's say you're making a {{ skills.skill2 }} check. 
 
-NEVER PLAY A GAME THAT DOESN'T DO SESSION ZERO
+    You would add together your proficiency bonus, and your {{ abilmodname }} mod.
+    You would then roll a d20(a twenty sided dice), and add together for the result.
+
+
+        <button id="d20">Roll D20</button>
+
+    <script type="text/javascript">const abilmodi={{ abilmod }} 
+        document.getElementById('d20').addEventListener('click', evt=>{
+          const proficiency_bonus= 2
+          function rollDice(min, max) {
+          return Math.floor(Math.random() * (max - min) + min);
+              }
+                diceRoll=rollDice(1,21)
+              const result = abilmodi + proficiency_bonus + diceRoll
+              document.getElementById('d20').insertAdjacentHTML("afterend",`Your mod was ${abilmodi}, proficiency bonus was ${proficiency_bonus}
+              and dice roll was ${diceRoll}. The result will be ${result}`)
+        })
+      
+        </script>
+</body>
