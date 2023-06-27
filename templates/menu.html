@@ -1,17 +1,13 @@
+{% extends 'base.html' %}
 {% for msg in get_flashed_messages() %}
     <p class="flash-msg">
       {{ msg }}
     </p>
     {% endfor %}
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-<title>
-    MAIN MENU
-</title>
 
-</head>
-
+  {% block title %} MAIN MENU {% endblock %}
+  {% block content %}
+  <div class="text-center">
 <h2>Log In</h2>
   <form action="/login" method="POST">
     <p>
@@ -26,7 +22,7 @@
       <input type="submit">
     </p>
   </form>
-create new account
+    <h2>create new account</h2>
 <form action="/user" method="POST">
     <p>
         Email <input type="text" id="create-email" name="email">
@@ -44,8 +40,8 @@ create new account
     <p>
       <input id=create_account_button type="submit">
     </p>
-  </form>
-<div id="menu-body" class="menu">
+  </form></div>
+<div id="menu-body" class="menu text-center">
     
     <p>
        <a href="/history"> history of D&D </a>
@@ -64,6 +60,4 @@ create new account
 
 </div>
 <script src='/static/js/dndjava.js'></script>
-</body>
-
-</html>
+{% endblock %}

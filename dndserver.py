@@ -465,15 +465,6 @@ def to_the_table():
                            skills=skills,
                            abilmodname=abilmodname)
 
-@app.route('/rolld20.json')
-def rolld20():
-
-    d20 = randint(1,20)
-
-    
-    return {'result':d20}
-
-
 
 if __name__ == "__main__":
     connect_to_db(app)

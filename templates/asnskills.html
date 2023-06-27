@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!doctype html>
 <html lang = "en">
   <head>
@@ -7,7 +8,8 @@
 
 
 
-  <body>
+
+    {% block content %}
     <p>Ability scores represent traits of your character, and are exactly what they sound like. </p>
     {% for score in ability_scores %}
     <form action="/ability-info" id="ability-scores" method="POST">
@@ -63,7 +65,7 @@
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSkills" aria-expanded="false" aria-controls="collapseSkills">
-            Level
+            <strong>Level</strong>
           </button>
         </h2>
         <div id="collapseSkills" class="accordion-collapse collapse" data-bs-parent="#accordionSkills">
@@ -74,18 +76,18 @@
               It is used for performing acrobatic maneuvers, avoiding falls or obstacles, and maintaining balance in precarious situations.</li>
               <li><strong>Animal Handling</strong>: Animal Handling represents a character's ability to interact with and understand animals. 
               It is used for calming or controlling animals, handling mounts, or interpreting their behavior.</li>
-              <strong>Arcana</strong>: Arcana represents a character's knowledge and understanding of magic, spells, 
+              <li><strong>Arcana</strong>: Arcana represents a character's knowledge and understanding of magic, spells, 
               and magical creatures. It is used for identifying magical items, recalling lore about spells or magical phenomena, 
-              and deciphering magical writings.
-              <strong>Athletics</strong>: Athletics measures a character's physical strength and athletic prowess. 
-              It is used for feats of strength, climbing, swimming, jumping, or engaging in physically demanding activities.
-              <strong>Deception</strong>: Deception measures a character's ability to convincingly lie, trick, or 
-              mislead others. It is used for disguises, bluffing, forging documents, or maintaining a false identity.
-              <strong>History</strong>: History represents a character's knowledge of past events, civilizations, 
+              and deciphering magical writings.</li>
+              <li><strong>Athletics</strong>: Athletics measures a character's physical strength and athletic prowess. 
+              It is used for feats of strength, climbing, swimming, jumping, or engaging in physically demanding activities.</li>
+              <li><strong>Deception</strong>: Deception measures a character's ability to convincingly lie, trick, or 
+              mislead others. It is used for disguises, bluffing, forging documents, or maintaining a false identity.</li>
+              <li><strong>History</strong>: History represents a character's knowledge of past events, civilizations, 
               and historical figures. It is used for recalling information about historical events, ancient ruins, or 
-              understanding the significance of historical artifacts.
-              <strong>Insight</strong>: Insight reflects a character's ability to read people's intentions and emotions. 
-              It is used for detecting lies, assessing someone's trustworthiness, or understanding unspoken messages through body language.
+              understanding the significance of historical artifacts.</li>
+              <li><strong>Insight</strong>: Insight reflects a character's ability to read people's intentions and emotions. 
+              It is used for detecting lies, assessing someone's trustworthiness, or understanding unspoken messages through body language.</li>
               <strong>Intimidation</strong>: Intimidation measures a character's ability to instill fear or exert 
               dominance over others. It is used for intimidating or coercing individuals, making threats, or asserting authority.
               <strong>Investigation</strong>: Investigation represents a character's ability to scrutinize and 
@@ -198,5 +200,6 @@
       <script src='/static/js/asverify.js'></script>
       <script src='/static/js/skillsverify.js'></script>
       <a href="/feats"> Feats</a>
-  </body>
+      {% endblock %}
+  
 </html>
