@@ -7,47 +7,113 @@
 
 
 {% block content %}
-<p>
-    explination about feats. There are many more feats in the book, here are some to choose from
-    for this example
+<p class="container">
+    Feats in D&D 5th Edition are optional character customization options that allow players to further enhance their characters' 
+    abilities and differentiate them from others. Feats provide unique bonuses, special abilities, or new options beyond what is 
+    granted by class features, race traits, or ability score improvements. Playing a human variant human gives you access to a 
+    feat at character creation.
 </p>
 <form action="/create-feats" method="POST">
-<li>
-    <input type="radio" name="feats" value="Durable" id="Durable">
-    <label for="Durable">durable: info</label></li>
-<li>
+
+<div class="row align-items-center">
+    <div class="col align-self-start">
+        <input type="radio" name="feats" value="Durable" id="Durable">
+    <label for="Durable">Durable: Hardy and resilient, you gain the following benefits:
+        Increase your Constitution score by 1. to a Maximum of 20.
+        When you roll a Hit Die to regain hit points, the
+        minimum number of hit points you regain from
+        the roll equals twice your Constitution modifier
+        (minimum of 2).
+        </label>
+    </div>
+    <div class="col align-self-start">
     <input type="radio" name="feats" value="Lucky" id="Lucky">
-    <label for="Lucky">Lucky: info</label></li>
-<li>
-    <input type="radio" name="feats" value="Savage attacker" id="Savage attacker">
-    <label for="Savage attacker">Savage Attacker: info</label></li>
+    <label for="Lucky">Lucky: You have inexplicable luck that seems to kick in at just
+        the right moment.You have 3 luck points. Whenever you make an attack roll, an ability check, or a saving throw, 
+        you can spend one luck point to roll an additional d20. You can choose to spend one of your luck points after you roll the die, 
+        but before the outcome is determined. You choose which of the d20s is used for the attack roll, ability check, or saving throw. 
+        You can also spend one luck point when an attack roll is made against you. Roll a d20, and then choose whether the attack uses the 
+        attacker's roll or yours. If more than one creature spends a luck point to influence the outcome of a roll, the points cancel each other out; 
+        no additional dice are rolled. You regain your expended luck points when you finish a long rest.
+
+        </label>
+    </div>
+    <div class="col align-self-start">
+        <input type="radio" name="feats" value="Savage attacker" id="Savage attacker">
+        <label for="Savage attacker">Savage Attacker: Once per turn when you roll damage for a melee weapon attack, 
+            you can reroll the weapon's damage dice and use either total.</label>
+    </div>
+    </div>
 
 
-<p>
+
+<p class="container">
     Fighting styles are like feats that are specific for the fighter class. If you're not going to play a fighter,
      you can skip this section, but do know that your class will 
     have their own mechanics that you'll need to understand before showing up at the game.
     select the great weapon style if you want to skip
 
 </p>
-    <li>
-        <input type="radio" name="fighting style" value="Archery" id="Archery">
-        <label for="Archery">archery: info</label></li>
-    <li>
+<div class="row">
+    <div class="col align-self-start">
+    <input type="radio" name="fighting style" value="Archery" id="Archery">
+    <label for="Archery">Archery: You gain a +2 bonus to attack rolls you make with
+        ranged weapons
+        </label>
+    </div>
+    <div class="col align-self-start">
         <input type="radio" name="fighting style" value="Defense" id="Defense">
-        <label for="Defense">defense: info</label></li>
-    <li>
+        <label for="Defense">Defense: While you are wearing armor, you gain a +1 bonus to AC.</label>
+    </div>
+    <div class="col align-self-end">
         <input type="radio" name="fighting style" value="Dueling" id="Dueling">
-        <label for="Dueling">dueling: info</label></li>
-    <li>
+        <label for="Dueling">Dueling: When you are wielding a melee weapon in one hand and
+            no other weapons, you gain a +2 bonus to damage rolls
+            with that weapon.
+            </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col align-self-start">
+        <input type="radio" name="fighting style" value="Dueling" id="Dueling">
+        <label for="Dueling">Dueling: When you are wielding a melee weapon in one hand and
+            no other weapons, you gain a +2 bonus to damage rolls
+            with that weapon.
+            </label>
+    </div>
+    <div class="col align-self-center">
         <input type="radio" name="fighting style" value="Great Weapon Fighting" id="Great weapon fighting">
-        <label for="Great weapon fighting">Great weapon fighting: info</label></li>
-    <li>
+        <label for="Great weapon fighting">Great weapon fighting: When you roll a 1 or 2 on a damage die for an attack you
+            make with a melee weapon that you are wielding with
+            two hands, you can reroll the die and must use the new
+            roll, even if the new roll is a 1 or a 2. The weapon must
+            have the two-handed or versatile property for you to gain
+            this benefit.
+            </label>
+    </div>
+    <div class="col align-self-end">
         <input type="radio" name="fighting style" value="Protection" id="Protection">
-        <label for="Protection">Protection: info</label></li>
-    <li>
+        <label for="Protection">Protection: When a creature you can see attacks a target other than
+            you that is within 5 feet of you, you can use your reaction
+            to impose disadvantage on the attack roll, You must be
+            wielding a shield.
+            </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col align-self-start">
+    </div>
+    <div class="col align-self-center">
         <input type="radio" name="fighting style" value="Two-weapon fighting" id="Two-weapon fighting">
-        <label for="Two-weapon fighting">Two-weapon fighting: info</label></li>
+        <label for="Two-weapon fighting">Two-weapon fighting: When you engage in two-weapon fighting, you can add
+            your ability modifier to the damage of the second attack.
+             </label>
+    </div>
+    <div class="col align-self-end">
+      
+    </div>
+  </div>
+   
         
         <p>
             <input type="submit">
