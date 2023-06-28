@@ -1,24 +1,60 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    page1
-<title>
-    Namefield
-</title>
 
-</head>
-<body>
+    {% block title %}
+    Namefield
+    {% endblock %}
+
+
+
+
+{% block content %}
+
+
 
 <p>First thing's first, pick a name:</p>
 <form action="/cnamefield-info" method="POST">
     <label for="char-name">Character Name</label>
     <input type="text" name="cname" id="char-name">
 
-<p>
-text to explain class, level, race
-</p>
-<p>here's some text that explains alignments, NOW CHOOSE!!!!</p>
+<div class="accordion-item accordion-background text-left">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSkills" aria-expanded="false" aria-controls="collapseSkills">
+      <strong>Alignment Info</strong>
+    </button>
+  </h2>
+  <div id="collapseSkills" class="accordion-collapse collapse" data-bs-parent="#accordionSkills">
+    <div class="accordion-body">
+        In D&D 5th Edition, the alignment system is a way to describe a character's moral and ethical outlook, providing a general guideline 
+        for their behavior and decision-making. Here's a brief explanation of the alignment system:
+        Alignment has two aspects: a character's moral alignment (Lawful, Neutral, or Chaotic) and their ethical alignment 
+        (Good, Neutral, or Evil). These aspects combine to form nine possible alignments:
+        <li>Lawful Good (LG): Characters with this alignment value order, justice, and the greater good.
+             They strive to uphold laws and act in a way that benefits others.</li>
+        <li>Neutral Good (NG): Characters with this alignment seek to do good but may not be bound by strict rules. 
+            They prioritize kindness, compassion, and doing what they believe is right.</li>
+        <li>Chaotic Good (CG): Characters with this alignment value personal freedom and individuality. 
+        They act on their own principles and often rebel against authority if they perceive it as oppressive.</li>
+        <li>Lawful Neutral (LN): Characters with this alignment believe in order and structure. They adhere to laws and 
+        regulations but may prioritize maintaining the system over individual moral judgments.</li>
+        <li>True Neutral (TN): Characters with this alignment maintain a balance between good and evil, law and chaos. 
+        They often act in their own self-interest or based on circumstances rather than adhering to strict moral or ethical codes.</li>
+        <li>Chaotic Neutral (CN): Characters with this alignment value personal freedom and individual choice above all else. 
+        They are unpredictable, following their own whims and desires without regard for rules or conventions.</li>
+        <li>Lawful Evil (LE): Characters with this alignment believe in using laws and systems to further their own evil ends. 
+        They are often manipulative and seek power and control over others.</li>
+        <li>Neutral Evil (NE): Characters with this alignment prioritize their own interests and desires, 
+        often without regard for the well-being of others. They act selfishly and opportunistically.</li>
+        <li>Chaotic Evil (CE): Characters with this alignment revel in chaos and destruction. They seek personal 
+            gratification and inflict pain and suffering on others without remorse.</li>
+        It's important to note that alignment is a guideline and not an absolute determinant of a character's actions. Characters can exhibit traits and behaviors that don't perfectly align with their stated alignment, and their alignment may evolve or change throughout their adventures.
+        Alignment can be a useful tool for players and Dungeon Masters to understand a character's moral compass and motivations, but ultimately, it's up to the players to bring their characters to life and make decisions that reflect their personality, background, and beliefs.
+        
+        
+      </p>
+    </div>
+  </div>
+</div>
+</div>
 
 
     <label for="align-select">Alignment to select</label>
@@ -33,9 +69,12 @@ text to explain class, level, race
       <option value="NE">Neutral Evil</option>
       <option value="CE">Chaotic Evil</option>
     </select>
-<p>text to explain what backgrounds are (yay!!!!!)</p>
-<p>here are some backgrounds. The book has more you can choose from, 
-    but these work really well for fighters</p>
+<div class="container">
+    In D&D 5th Edition, backgrounds provide additional flavor, skills, and story hooks to a character's backstory. 
+    They represent the character's life before becoming an adventurer and help shape their personality, skills, and 
+    connections.</p>
+    <p>here are some backgrounds. The book has more you can choose from, 
+    but these work really well for fighters</p></div>
 
     Backgrounds:
     <li>
@@ -65,5 +104,5 @@ text to explain class, level, race
   </form>
 
   <a href="/asnskills"> Time to choose ability scores and skills</a>
-</body>
-</html>
+
+  {% endblock %}

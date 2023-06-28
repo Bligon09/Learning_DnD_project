@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
-<!doctype html>
-<html>
-  <head>
-    <title>At-the-table</title>
-  </head>
-  <body>
+{% block title %}At-the-table{% endblock %}
+{% block content %}
 
     Skill rolls will look like this:
     Roll a d20.
@@ -32,4 +28,4 @@
         })
       
         </script>
-</body>
+{% endblock %}

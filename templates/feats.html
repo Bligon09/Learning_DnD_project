@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    page3
-<title>
-    Feats
-</title>
 
-</head>
-<body>
+{% block title %}
+    Feats
+{% endblock %}
+
+
+
+{% block content %}
 <p>
     explination about feats. There are many more feats in the book, here are some to choose from
     for this example
@@ -57,4 +55,4 @@
     
         </form>
         <a href="/equipment"> Adventuring Gear!</a>
-</body>
+{% endblock %}

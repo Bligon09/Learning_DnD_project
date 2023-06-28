@@ -1,20 +1,9 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    page5
-<title>
-    other stats
-</title>
 
-</head>
-<body>
-<form action="/otherstats-add" method="POST">
-    <p>
-        <input type="submit">
-      </p>
+{% block title %} other stats {% endblock %}
 
-</form>
+{% block content %}
+
 <p>
     A proficiency bonus is assign based on your class and level, in the player's handbook. 
     For a fighter at level 1, your proficiency bonus is 2.
@@ -28,7 +17,4 @@
 <p>
     explain how speed works
 </p>
-
-</body>
-
-</html>
+{% endblock %}

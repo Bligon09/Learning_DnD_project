@@ -10,19 +10,23 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
     crossorigin="anonymous"></script>
   <link href="/static/dndcss.css" rel="stylesheet">
-    <style>  
-      body {
-          background-image: url('/static/dndproject-images/paper5.avif');
-          background-size: cover;
-      }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
-  
-    <form action="/logout" method="POST">
-    <button id="logout">Log Out</button>
-    </form>
-
+  <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+    <div class="container-fluid" background-color="#5C4033">
+      <a class="navbar-brand" background-color="#5C4033" href="/menu">Menu</a>
+      <form action="/logout" method="POST">
+        <button id="logout">Log Out</button>
+        </form>
+    
+    </div>
+  </nav>
+    
     {% block content %} {% endblock %}
 </body>
 </html>

@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
-<!doctype html>
-<html>
-  <head>
     page4
-    <title>
+    {% block title %}
       equipment
-    </title>
+    {% endblock %}
 
-  </head>
-  <body>
+  {% block content %}
    <form action="add-equipment" method="POST">
 
     <p>
@@ -19,5 +15,4 @@
    This is where the equipment that the player has will be displayed and discussed
 
    <a href="/otherstats"> Let's talk about a few other important stats </a>
-  </body>
-</html>
+  {% endblock %}

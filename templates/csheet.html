@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
-<!doctype html>
-<html>
-  <head>
-    <title>Character Sheet</title>
-  </head>
 
-  <body>
+  {% block title %}Character Sheet{% endblock %}
+
+  {% block content %}
    
 
     <h1>{{ user.user_name }}</h1>
@@ -57,8 +54,4 @@
   <li>{{ feats.fighting_style }}</li>
 
 
-
-
-
-  </body>
-</html>
+{% endblock %}
