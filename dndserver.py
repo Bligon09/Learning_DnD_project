@@ -75,6 +75,7 @@ def login():
 @app.route('/logout', methods =['POST'] )
 def logout():
     del session['current_user']
+    flash("You are now logged out")
     return redirect ('/menu')
 
 @app.route('/new-to-roleplaying')

@@ -11,17 +11,18 @@
 
 
 
-<p>First thing's first, pick a name:</p>
+<p style="margin:20px">First thing's first, pick a name:</p>
 <form action="/cnamefield-info" method="POST">
-    <label for="char-name">Character Name</label>
-    <input type="text" name="cname" id="char-name">
-
-<div class="accordion-item accordion-background text-left">
-  <h2 class="accordion-header">
+    <input type="text" name="cname" placeholder="Character Name" id="char-name" style="margin:20px">
+<div class="container">
+<div class="accordion">
+<div class="accordion-item accordion-background text-left" style="margin:10">
+  <div class="align-self-center">
+  <h2 class="accordion-header " >
     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSkills" aria-expanded="false" aria-controls="collapseSkills">
-      <strong>Alignment Info</strong>
+      <strong>Expand Here for Alignment Info</strong>
     </button>
-  </h2>
+  </h2></div>
   <div id="collapseSkills" class="accordion-collapse collapse" data-bs-parent="#accordionSkills">
     <div class="accordion-body">
         In D&D 5th Edition, the alignment system is a way to describe a character's moral and ethical outlook, providing a general guideline 
@@ -56,53 +57,86 @@
 </div>
 </div>
 
+<label for="align-select">Alignment to select</label>
+<select name="alignment" id="align-select">
+  <option value="LG">Lawful Good</option>
+  <option value="NG">Neutral Good</option>
+  <option value="CG">Chaotic good</option>
+  <option value="LN">Lawful Neutral</option>
+  <option value="NN">Neutral Neutral</option>
+  <option value="CN">Chaotic Neutral</option>
+  <option value="LE">Lawful Evil</option>
+  <option value="NE">Neutral Evil</option>
+  <option value="CE">Chaotic Evil</option>
+</select>
+</div>
 
-    <label for="align-select">Alignment to select</label>
-    <select name="alignment" id="align-select">
-      <option value="LG">Lawful Good</option>
-      <option value="NG">Neutral Good</option>
-      <option value="CG">Chaotic good</option>
-      <option value="LN">Lawful Neutral</option>
-      <option value="NN">Neutral Neutral</option>
-      <option value="CN">Chaotic Neutral</option>
-      <option value="LE">Lawful Evil</option>
-      <option value="NE">Neutral Evil</option>
-      <option value="CE">Chaotic Evil</option>
-    </select>
+
+    
 <div class="container">
     In D&D 5th Edition, backgrounds provide additional flavor, skills, and story hooks to a character's backstory. 
     They represent the character's life before becoming an adventurer and help shape their personality, skills, and 
     connections.</p>
     <p>here are some backgrounds. The book has more you can choose from, 
     but these work really well for fighters</p></div>
-
-    Backgrounds:
-    <li>
+    <div class="container">
+    Backgrounds:<br>
     <input type="radio" name="backgrounds" value="Folk-hero" id="Folk-hero">
-    <label for="Folk-hero">folk-hero:info</label></li>
-        
-    <li>
+    <label for="Folk-hero"><strong>Folk-Hero</strong>: You come from a humble social rank, but you are destined for so much more. 
+    Already the people of your home village regard you as their champion, and your destiny calls you to stand 
+    against the tyrants and monsters that threaten the common folk everywhere.<br>
+    <strong>Skill Proficiencies</strong>: Animal Handling, Survival<br>
+    <strong>Tool Proficiencies</strong>: One type of artisan’s tools, vehicles (land)<br>
+    <strong>Equipment</strong>: A set of artisan’s tools (one of your choice), a shovel, an iron pot, a set of common clothes, and a pouch containing 10 gp</label>
     <input type="radio" name="backgrounds" value="Noble" id="Noble">
-    <label for="Noble">Noble: info</label></li>
-
-    <li>
-        <input type="radio" name="backgrounds" value="Outlander" id="Outlander">
-        <label for="Outlander">Outlander: info</label></li>
-
-    <li>
-        <input type="radio" name="backgrounds" value="Sailor" id="Sailor">
-        <label for="Sailor">Sailor: info</label></li>
-
-    <li>
-        <input type="radio" name="backgrounds" value="Soldier" id="Soldier">
-        <label for="Soilder">Soldier: info</label></li>
-
+    <label for="Noble"><strong>Noble</strong>: 
+    You understand wealth, power, and privilege. You carry a noble title, and your family owns land, 
+    collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar 
+    with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a 
+    disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about
+    the people who live and work on your land, keenly aware of your responsibility to them.<br>
+    Skill Proficiencies: History, Persuasion<br>
+    Tool Proficiencies: One type of gaming set<br>
+    Languages: One of your choice<br>
+    Equipment: A set of fine clothes, a signet ring, a scroll of pedigree, and a purse containing 25 gp</label>
+    <input type="radio" name="backgrounds" value="Outlander" id="Outlander">
+    <label for="Outlander"><strong>Outlander</strong>: You grew up in the wilds, far from the comforts of town and technology. 
+    You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller 
+    could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are 
+    in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where 
+    you don’t know the specific features of the terrain, you know the ways of the wild.<br>
+    Skill Proficiencies: Athletics, Survival<br>
+    Tool Proficiencies: One type of musical instrument<br>
+    Languages: One of your choice<br>
+    Equipment: A staff, a hunting trap, a trophy from an animal you killed, a set of traveler’s clothes, and a pouch containing 10 gp</label>
+    <input type="radio" name="backgrounds" value="Sailor" id="Sailor">
+    <label for="Sailor"><strong>Sailor</strong>: You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, 
+    monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the 
+    distant line of the horizon, but the time has come to try your hand at something new.<br>
+    Skill Proficiencies: Athletics, Perception<br>
+    Tool Proficiencies: Navigator’s tools, vehicles (water)<br>
+    Equipment: A belaying pin (club), 50 feet of silk rope, a lucky charm such as a rabbit foot 
+    or a small stone with a hole in the center (or you may roll for a random trinket on the Trinkets table in chapter 
+    5 of the Player’s Handbook), a set of common clothes, and a pouch containing 10 gp</label>
+    <input type="radio" name="backgrounds" value="Soldier" id="Soldier">
+    <label for="Soilder"><strong>Soldier</strong>: War has been your life for as long as you care to remember. You trained 
+    as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive 
+    on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member 
+    of a local militia who rose to prominence during a recent war.<br>
+    Skill Proficiencies: Athletics, Intimidation<br>
+    Tool Proficiencies: One type of gaming set, vehicles (land)<br>
+    Equipment: An insignia of rank, a trophy taken from a fallen enemy (a dagger, broken blade, or piece of a banner), 
+    a set of bone dice or deck of cards, a set of common clothes, and a pouch containing 10 gp<br>
+    Skill Proficiencies: Athletics, Intimidation<br>
+    Tool Proficiencies: One type of gaming set, vehicles (land)<br>
+    Equipment: An insignia of rank, a trophy taken from a fallen enemy (a dagger, broken blade, or piece of a banner), 
+    a set of bone dice or deck of cards, a set of common clothes, and a pouch containing 10 gp</label>
 
         <p>
             <input type="submit">
           </p>
   </form>
-
+</div>
   <a href="/asnskills"> Time to choose ability scores and skills</a>
 
   {% endblock %}

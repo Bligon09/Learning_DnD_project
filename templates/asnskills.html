@@ -1,15 +1,11 @@
 {% extends 'base.html' %}
-<!doctype html>
-<html lang = "en">
-  <head>
-    page2
-    <title>Ability Scores and Skills</title>
-  </head>
+{% block title %} Ability Scores and Skills {% endblock %}
 
 
 
 
     {% block content %}
+    <div class="container">
     <p>Ability scores represent traits of your character, and are exactly what they sound like. </p>
     {% for score in ability_scores %}
     <form action="/ability-info" id="ability-scores" method="POST">
@@ -58,10 +54,12 @@
       
       <form ACTION="/skills-info" id="skills" method="POST">
     <p>Skills represent training that your character has had, and something that they are talented in. If you have a proficiency in a skill, 
-      that means if the DM ask for a  roll with that skill, you get to add your proficiency bonus. You already get to skills based on your background, 
-      now you get to choose skills based on your race, and class.</p>
+      that means if the DM ask for a roll with that skill, you get to add your proficiency bonus You already get to skills based on your background, 
+      now you get to choose skills based on your race, and class. Below is some more info about skills, but they are mostly exactly what their name suggests. </p>
 
-  <div class="accordion" id="accordionSkills"></div>
+
+<div class="container">
+  <div class="accordion" id="accordionSkills">
       <div class="accordion-item accordion-background">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSkills" aria-expanded="false" aria-controls="collapseSkills">
@@ -72,55 +70,50 @@
           <div class="accordion-body">
             <p>In Dungeons & Dragons 5th Edition (D&D 5e), skills represent a character's proficiency and expertise in various areas. 
               Here's a brief description of all the skills in the game:
-              <li><strong>Acrobatics</strong>: This skill reflects a character's agility, balance, and coordination. 
-              It is used for performing acrobatic maneuvers, avoiding falls or obstacles, and maintaining balance in precarious situations.</li>
-              <li><strong>Animal Handling</strong>: Animal Handling represents a character's ability to interact with and understand animals. 
-              It is used for calming or controlling animals, handling mounts, or interpreting their behavior.</li>
-              <li><strong>Arcana</strong>: Arcana represents a character's knowledge and understanding of magic, spells, 
-              and magical creatures. It is used for identifying magical items, recalling lore about spells or magical phenomena, 
-              and deciphering magical writings.</li>
-              <li><strong>Athletics</strong>: Athletics measures a character's physical strength and athletic prowess. 
-              It is used for feats of strength, climbing, swimming, jumping, or engaging in physically demanding activities.</li>
-              <li><strong>Deception</strong>: Deception measures a character's ability to convincingly lie, trick, or 
-              mislead others. It is used for disguises, bluffing, forging documents, or maintaining a false identity.</li>
-              <li><strong>History</strong>: History represents a character's knowledge of past events, civilizations, 
-              and historical figures. It is used for recalling information about historical events, ancient ruins, or 
-              understanding the significance of historical artifacts.</li>
-              <li><strong>Insight</strong>: Insight reflects a character's ability to read people's intentions and emotions. 
-              It is used for detecting lies, assessing someone's trustworthiness, or understanding unspoken messages through body language.</li>
-              <strong>Intimidation</strong>: Intimidation measures a character's ability to instill fear or exert 
-              dominance over others. It is used for intimidating or coercing individuals, making threats, or asserting authority.
-              <strong>Investigation</strong>: Investigation represents a character's ability to scrutinize and 
-              analyze details to uncover clues or hidden information. It is used for searching for secret doors, 
-              finding hidden objects, or piecing together information from a crime scene.
-              <strong>Medicine</strong>: Medicine reflects a character's knowledge and proficiency in treating 
-              injuries and ailments. It is used for stabilizing dying characters, providing first aid, diagnosing illnesses, 
-              or administering antidotes.
-              <strong>Nature</strong>: Nature represents a character's understanding of the natural world, 
-              including animals, plants, and geography. It is used for identifying creatures, tracking, foraging, 
-              or recalling information about the natural environment.
+              <strong>Acrobatics</strong>: This skill reflects a character's agility, balance, and coordination.
+              It is used for performing acrobatic maneuvers, avoiding falls or obstacles, and maintaining balance in precarious situations.<br>
+              <strong>Animal Handling</strong>: Animal Handling represents a character's ability to interact with and understand animals.
+              It is used for calming or controlling animals, handling mounts, or interpreting their behavior.<br>
+              <strong>Arcana</strong>: Arcana represents a character's knowledge and understanding of magic, spells,
+              and magical creatures. It is used for identifying magical items, recalling lore about spells or magical phenomena,
+              and deciphering magical writings.<br>
+              <strong>Athletics</strong>: Athletics measures a character's physical strength and athletic prowess.
+              It is used for feats of strength, climbing, swimming, jumping, or engaging in physically demanding activities.<br>
+              <strong>Deception</strong>: Deception measures a character's ability to convincingly lie, trick, or
+              mislead others. It is used for disguises, bluffing, forging documents, or maintaining a false identity.<br>
+              <strong>History</strong>: History represents a character's knowledge of past events, civilizations,
+              and historical figures. It is used for recalling information about historical events, ancient ruins, or
+              understanding the significance of historical artifacts.<br>
+              <strong>Insight</strong>: Insight reflects a character's ability to read people's intentions and emotions.
+              It is used for detecting lies, assessing someone's trustworthiness, or understanding unspoken messages through body language.<br>
+              <strong>Intimidation</strong>: Intimidation measures a character's ability to instill fear or exert dominance over others. It is used for intimidating or coercing individuals, making threats, or asserting authority.<br>
+              <strong>Investigation</strong>: Investigation represents a character's ability to scrutinize and analyze details to uncover clues or hidden information. It is used for searching for secret doors, finding hidden objects, or piecing together information from a crime scene.<br>
+              <strong>Medicine</strong>: Medicine reflects a character's knowledge and proficiency in treating injuries and ailments. 
+              It is used for stabilizing dying characters, providing first aid, diagnosing illnesses, or administering antidotes.<br>
+              <strong>Nature</strong>: Nature represents a character's understanding of the natural world, including animals, plants, 
+              and geography. It is used for identifying creatures, tracking, foraging, or recalling information about the natural environment.<br>
               <strong>Perception</strong>: Perception measures a character's awareness and keenness of the senses. 
-              It is used for detecting hidden objects, spotting traps, noticing details, or eavesdropping.
-              <strong>Performance</strong>: Performance reflects a character's skill in entertaining an audience through 
-              artistic expression. It is used for acting, singing, playing a musical instrument, or any other form of performance art.
-              <strong>Persuasion</strong>: Persuasion measures a character's ability to influence others through 
-              charm, diplomacy, or negotiation. It is used for convincing NPCs, negotiating deals, or swaying attitudes through reasoned arguments.
-              <strong>Religion</strong>: Religion represents a character's knowledge of deities, religious practices, 
-              and religious texts. It is used for recalling information about religious rituals, identifying religious symbols, 
-              or understanding religious customs.
-              <strong>Sleight of Hand</strong>: Sleight of Hand measures a character's dexterity and nimbleness in performing 
-              manual tricks or manipulating objects covertly. It is used for pickpocketing, concealing small objects, or performing 
-              tricks with cards or coins.
-              <strong>Stealth</strong>: Stealth represents a character's ability to move silently and remain unnoticed. It is 
-              used for sneaking, hiding, moving silently, or avoiding detection.
-              <strong>Survival</strong>: Survival reflects a character's ability to live off the land, navigate in the wilderness, 
-              and find sustenance. It is used
-              
+              It is used for detecting hidden objects, spotting traps, noticing details, or eavesdropping.<br>
+              <strong>Performance</strong>: Performance reflects a character's skill in entertaining an audience through artistic 
+              expression. It is used for acting, singing, playing a musical instrument, or any other form of performance art.<br>
+              <strong>Persuasion</strong>: Persuasion measures a character's ability to influence others through charm, diplomacy, or 
+              negotiation. It is used for convincing NPCs, negotiating deals, or swaying attitudes through reasoned arguments.<br>
+              <strong>Religion</strong>: Religion represents a character's knowledge of deities, religious practices, and religious 
+              texts. It is used for recalling information about religious rituals, identifying religious symbols, or understanding 
+              religious customs.<br>
+              <strong>Sleight of Hand</strong>: Sleight of Hand measures a character's dexterity and nimbleness in performing manual 
+              tricks or manipulating objects covertly. It is used for pickpocketing, concealing small objects, or 
+              performing tricks with cards or coins.<br>
+              <strong>Stealth</strong>: Stealth represents a character's ability to move silently and remain unnoticed. 
+              It is used for sneaking, hiding, moving silently, or avoiding detection.<br>
+              <strong>Survival</strong>: Survival reflects a character's ability to live off the land, navigate 
+              in the wilderness, and find sustenance.<br>            
             </p>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
       {% if background == 'Folk-hero' %}
         <p> For a folk hero background, you already have skill proficiencies in Animal handling, and survival.</p>
@@ -163,8 +156,9 @@
           <option value="Survival">Survival</option>
         </select>
     
-
-      <p>two skills proficiencies granted by your class</p>
+      <div class="container">
+      <p>Select two skills granted by your class</p>
+      </div>
     
         <label for="cskill1">skills to select</label>
         <select name="cskill1" id="cskill1">
@@ -200,6 +194,6 @@
       <script src='/static/js/asverify.js'></script>
       <script src='/static/js/skillsverify.js'></script>
       <a href="/feats"> Feats</a>
+    </div>
       {% endblock %}
   
-</html>
