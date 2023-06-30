@@ -1,0 +1,18 @@
+body {
+    background-image: url('/static/dndproject-images/paper5.avif');
+    background-size: cover;
+}
+
+
+.class-image{
+    
+    width:300px;
+    display:block;
+
+}
+
+.accordion-background{
+
+    background-color: #F7E2B3;
+
+}
