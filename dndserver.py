@@ -148,7 +148,7 @@ def get_bskills():
         return {'bskill1': 'Athletics', 'bskill2': 'Survival'}
     if background=="Sailor":
         return {'bskill1': 'Athletics', 'bskill2': 'Perception'}
-    if background=="Solider":
+    if background=="Soldier":
         return {'bskill1': 'Athletics', 'bskill2': 'Intimidation'}
     
 

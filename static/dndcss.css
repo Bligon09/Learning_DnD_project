@@ -1,6 +1,7 @@
 body {
     background-image: url('/static/dndproject-images/paper5.avif');
     background-size: cover;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
