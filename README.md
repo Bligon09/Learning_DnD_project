@@ -7,5 +7,5 @@ SQLAlchemy
 PostgreSQL
 HTML
 CSS
-Bootstrapcd.
+Bootstrap
 Javascript
