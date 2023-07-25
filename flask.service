@@ -1,0 +1,16 @@
+[Unit]
+Description=Learning DnD
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Environment="LANG=en_US.UTF-8"
+Environment="LANGUAGE=en_US.UTF-8:"
+WorkingDirectory=/home/ubuntu/Learning_DnD_project/
+ExecStart=/bin/bash -c "source env/bin/activate\
+&& python3 dndserver.py &>> flask.log"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
