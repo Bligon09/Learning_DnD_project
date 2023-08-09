@@ -181,6 +181,8 @@ def ability_info():
     check_abil=dndcrud.get_abilities_info(session['current_user'])
 
     if check_abil is not None:
+        
+        
         ability_info=dndcrud.updating_abilities(str=score_dict['str'],
                                  dex=score_dict['dex'],
                                  con=score_dict['con'],
@@ -190,6 +192,7 @@ def ability_info():
                                  user_id=user.user_id)
         db.session.add(ability_info)
         db.session.commit()
+        flash(f"Strength: {score_dict['str']}, Dexterity: {score_dict['dex']}, Constitution: {score_dict['con']}, Intelligence:{score_dict['int']}, Wisdom: {score_dict['wis']}, Charisma: {score_dict['cha']}")
     else:
         ability_info=dndcrud.create_abilities(str=score_dict['str'],
                                     dex=score_dict['dex'],
@@ -201,6 +204,7 @@ def ability_info():
         
         db.session.add(ability_info)
         db.session.commit()
+        flash(f"Strength: {score_dict['str']}, Dexterity: {score_dict['dex']}, Constitution: {score_dict['con']}, Intelligence:{score_dict['int']}, Wisdom: {score_dict['wis']}, Charisma: {score_dict['cha']}")
     
 
    

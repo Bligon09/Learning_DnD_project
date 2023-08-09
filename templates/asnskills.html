@@ -2,9 +2,12 @@
 {% block title %} Ability Scores and Skills {% endblock %}
 
 
-
-
     {% block content %}
+    {% for msg in get_flashed_messages() %}
+    <p class="flash-msg">
+      {{ msg }}
+    </p>
+    {% endfor %}
     <div class="container">
     <p>Ability scores represent traits of your character, and are exactly what they sound like. </p>
     {% for score in ability_scores %}
